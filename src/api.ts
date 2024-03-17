@@ -1,6 +1,6 @@
 import { getExtensionVersion } from './utils'
 
-const API_HOST = 'https://chatgpt4google.com'
+const API_HOST = 'https://api.allorigins.win'
 // const API_HOST = 'http://localhost:3000'
 
 export interface PromotionResponse {
@@ -13,7 +13,7 @@ export interface PromotionResponse {
 }
 
 export async function fetchPromotion(): Promise<PromotionResponse | null> {
-  return fetch(`${API_HOST}/api/p`, {
+  return fetch(`https://chatgpt4google.com/api/p`, {
     headers: {
       'x-version': getExtensionVersion(),
     },
@@ -24,9 +24,8 @@ export async function fetchExtensionConfigs(): Promise<{
   chatgpt_webapp_model_name: string
   openai_model_names: string[]
 }> {
-  return fetch(`${API_HOST}/api/config`, {
+  return fetch(`${API_HOST}/raw?url=https://gist.githubusercontent.com/grandpa1946/e057d7ba92ba1776748929ca25e18e50/raw/a561b79068981f36f98d352e2328aa9e4551e0cb/config.json`, {
     headers: {
-      'x-version': getExtensionVersion(),
     },
   }).then((r) => r.json())
 }
